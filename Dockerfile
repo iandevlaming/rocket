@@ -24,6 +24,9 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y sudo
 
+# install python3 
+RUN apt-get update && \
+    apt-get install -y python3
 # misc
 USER ${UID}:${GID}
 WORKDIR /home/${USER}
