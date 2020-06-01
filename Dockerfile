@@ -24,6 +24,12 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y sudo
 
+# install python3 
+RUN apt-get update && \
+    apt-get install -y python3 && \
+    apt-get install -y python3-numpy && \
+    apt-get install -y python3-matplotlib
+
 # misc
 USER ${UID}:${GID}
 WORKDIR /home/${USER}
