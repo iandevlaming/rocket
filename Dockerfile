@@ -19,11 +19,18 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y vim
 
-## install ag
+# install ag
 RUN apt-get update && \
     apt-get install -y silversearcher-ag
 
-## install python3 libraries
+# install gcc 10
+RUN apt-get update && \
+    apt-get install -y build-essential && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository -y ppa:ubuntu-toolchain-r/test && \
+    apt-get install -y gcc-10 g++-10
+
+# install python3 libraries
 RUN apt-get update && \
     apt-get install -y python3-numpy && \
     apt-get install -y python3-matplotlib
