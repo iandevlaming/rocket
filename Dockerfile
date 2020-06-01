@@ -1,7 +1,10 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
 ARG USER
 ARG UID
 ARG GID
+
+# unminimize
+RUN yes | unminimize -y
 
 # install bazel
 RUN apt-get update && \
@@ -16,20 +19,16 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y vim
 
-# install ag
+## install ag
 RUN apt-get update && \
     apt-get install -y silversearcher-ag
 
-# install sudo
+## install python3 libraries
 RUN apt-get update && \
-    apt-get install -y sudo
-
-# install python3 
-RUN apt-get update && \
-    apt-get install -y python3 && \
     apt-get install -y python3-numpy && \
     apt-get install -y python3-matplotlib
 
 # misc
 USER ${UID}:${GID}
 WORKDIR /home/${USER}
+COPY .rocketrc /home/${USER}/.bashrc

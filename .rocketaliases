@@ -1,0 +1,14 @@
+alias rocket_build='docker build --build-arg USER=$USER --build-arg UID=$UID --build-arg GID=$GID -t rocket:0.1 .'
+alias takeoff='docker run -it \
+                --name=rocket \
+                --hostname=rocket \
+                -u="$(id -u)" \
+                -e CODE_DIR=$CODE_DIR \
+                -v $CODE_DIR:$CODE_DIR \
+                -v /etc/group:/etc/group:ro \
+                -v /etc/passwd:/etc/passwd:ro \
+                -v /etc/shadow:/etc/shadow:ro \
+                -w $CODE_DIR \
+                rocket:0.1 /bin/bash'
+alias land='docker rm -vf rocket'
+
