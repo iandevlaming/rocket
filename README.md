@@ -5,7 +5,8 @@ Utilities for using a containerized build environment
 1. Install docker (https://docs.docker.com/engine/install/)
 2. Define an environment variable `CODE_DIR` which contains the path to the development environment. This directory will be binary mounted with write permission
 3. Users may also need to define a `GID` environment variable as ```$: GID=$(id -g)``` if it is not already defined
-4. Source .rocketrc file in your .bashrc to get useful aliases for creating and working rocket: ```$: source <path/to/rocket>/.rocketrc```
+4. Source `.rocketaliases` file in your `.bashrc` to get useful aliases for creating and working rocket: ```$: source <path/to/rocket>/.rocketaliases```
+5. (Optional) modify .rocketrc to user preference, this file is copied into `/home/$USER/.bashrc`
 
 # Usage
 * `rocket_build` will build the image `rocket:<version tag>` from the provided docker file `Dockerfile`. This command must be run from the `rocket` directory
