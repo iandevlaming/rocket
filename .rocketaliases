@@ -4,10 +4,13 @@ alias takeoff='docker run -it \
                 --hostname=rocket \
                 -u="$(id -u)" \
                 -e CODE_DIR=$CODE_DIR \
+                -e DISPLAY=$DISPLAY \
                 -v $CODE_DIR:$CODE_DIR \
                 -v /etc/group:/etc/group:ro \
                 -v /etc/passwd:/etc/passwd:ro \
                 -v /etc/shadow:/etc/shadow:ro \
+                -v /etc/bazel.bazelrc:/etc/bazel.bazelrc:ro \
+                -v /tmp/.X11-unix:/tmp/.X11-unix \
                 -w $CODE_DIR \
                 rocket:0.1 /bin/bash'
 alias land='docker rm -vf rocket'
