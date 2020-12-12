@@ -14,6 +14,10 @@ Utilities for using a containerized build environment
 * `land` will remove the `rocket` container along with any associated volumes
 
 # Etc
-* The primary features of the container are a minimal install of ubuntu:latest and the bazel buld tool
+* The primary features of the container are a full install of ubuntu:18.04 and the bazel buld tool
+* Several command line tools and libraries are installed based on needs in other repositories. These can be commented out or removed if they aren't needed. Some examples include
+  * gcc 10
+  * cmake
+  * ninja
 * There is no special reason for using a docker file over an image on docker hub other than frequent iteration on the base image
 * Most commands are currently just aliases - future work should manage detached, persistently running containers, single command execution, and multiple rocket terminals for a single container instance. The build command should also handle build failure and cleanup
